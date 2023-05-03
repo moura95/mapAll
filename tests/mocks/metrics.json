@@ -1,0 +1,13 @@
+ {
+  "total_urls_shortened": 100,
+  "urls_shortened_last_day": 1,
+  "urls_shortened_last_week": 10,
+  "urls_shortened_last_two_weeks": 30,
+  "urls_shortened_last_month": 50,
+  "urls_shortened_last_year": 100,
+  "redirect_count_by_short_url": [
+    {
+      "abc": 18
+    }
+  ]
+}

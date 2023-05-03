@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "full": "https://www.google.com",
+    "short": "abc123",
+    "random": true,
+    "count": 10,
+    "createdAt": "2023-04-28T15:12:00.000Z",
+    "updatedAt": "2023-04-29T19:23:54.000Z"
+  },
+  {
+    "id": 2,
+    "full": "https://www.github.com",
+    "short": "def456",
+    "random": false,
+    "count": 5,
+    "createdAt": "2023-05-01T09:45:21.000Z",
+    "updatedAt": "2023-05-02T14:36:02.000Z"
+  },
+  {
+    "id": 3,
+    "full": "https://www.amazon.com",
+    "short": "ghi789",
+    "random": false,
+    "count": 0,
+    "createdAt": "2023-05-03T11:20:43.000Z",
+    "updatedAt": "2023-05-03T11:20:43.000Z"
+  },
+  {
+    "id": 4,
+    "full": "https://www.youtube.com",
+    "short": "jkl012",
+    "random": true,
+    "count": 8,
+    "createdAt": "2023-05-04T12:35:00.000Z",
+    "updatedAt": "2023-05-05T16:47:20.000Z"
+  },
+  {
+    "id": 5,
+    "full": "https://www.linkedin.com",
+    "short": "mno345",
+    "random": false,
+    "count": 2,
+    "createdAt": "2023-05-06T09:15:42.000Z",
+    "updatedAt": "2023-05-07T13:59:10.000Z"
+  },
+  {
+    "id": 6,
+    "full": "https://www.facebook.com",
+    "short": "pqr678",
+    "random": true,
+    "count": 15,
+    "createdAt": "2023-05-08T20:50:13.000Z",
+    "updatedAt": "2023-05-09T11:10:30.000Z"
+  },
+  {
+    "id": 7,
+    "full": "https://www.stackoverflow.com",
+    "short": "stu901",
+    "random": false,
+    "count": 3,
+    "createdAt": "2023-05-10T14:25:37.000Z",
+    "updatedAt": "2023-05-11T18:05:45.000Z"
+  },
+  {
+    "id": 8,
+    "full": "https://www.twitter.com",
+    "short": "vwx234",
+    "random": true,
+    "count": 20,
+    "createdAt": "2023-05-12T08:30:00.000Z",
+    "updatedAt": "2023-05-13T12:45:10.000Z"
+  },
+  {
+    "id": 9,
+    "full": "https://www.netflix.com",
+    "short": "yza567",
+    "random": false,
+    "count": 7,
+    "createdAt": "2023-05-14T18:55:21.000Z",
+    "updatedAt": "2023-05-15T09:40:50.000Z"
+  },
+  {
+    "id": 10,
+    "full": "https://www.apple.com",
+    "short": "bcd890",
+    "random": true,
+    "count": 12,
+    "createdAt": "2023-05-16T11:10:43.000Z",
+    "updatedAt": "2023-05-17T14:25:02.000Z"
+  }
+]
