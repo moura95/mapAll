@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon app.js",
     "test": "jest",
     "jest": "jest"
   },
@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "adj": "^0.0.1-beta.1",
+    "ajv": "^8.12.0",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",

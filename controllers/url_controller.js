@@ -1,7 +1,19 @@
 const utils = require('../utils/utils');
+const Ajv = require("ajv")
+const ajv = new Ajv()
 class UrlController {
     constructor(repository) {
         this.repository = repository;
+        this.schema = {
+            type: "object",
+            properties: {
+                full: {type: "string"},
+                short: {type: "string"}
+            },
+            required: ["full"],
+            additionalProperties: false
+        }
+        this.validate = ajv.compile(this.schema)
     }
     async GetAllUrls(req, res) {
         try {
@@ -15,6 +27,11 @@ class UrlController {
 
     async CreateUrl(req, res) {
         const fullUrl = req.body.full;
+        const valid = this.validate(req.body)
+        if (!valid) {
+            res.status(400).send({err: 'Invalid body'});
+            return;
+        }
         if (!utils.isValidUrl(fullUrl)) {
             res.status(400).send({err: 'full url invalid'});
             return;
