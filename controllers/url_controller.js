@@ -7,8 +7,8 @@ class UrlController {
         this.schema = {
             type: "object",
             properties: {
-                full: {type: "string"},
-                short: {type: "string"}
+                full: { type: "string" },
+                short: { type: "string" }
             },
             required: ["full"],
             additionalProperties: false
@@ -21,7 +21,7 @@ class UrlController {
             res.status(200).json(urls);
         } catch (err) {
             console.error(err);
-            res.status(500).send({err: 'Internal server error'});
+            res.status(500).send({ err: 'Internal server error' });
         }
     }
 
@@ -29,29 +29,31 @@ class UrlController {
         const fullUrl = req.body.full;
         const valid = this.validate(req.body)
         if (!valid) {
-            res.status(400).send({err: 'Invalid body'});
+            res.status(400).send({ err: 'Invalid body' });
             return;
         }
         if (!utils.isValidUrl(fullUrl)) {
-            res.status(400).send({err: 'full url invalid'});
+            res.status(400).send({ err: 'full url invalid' });
             return;
         }
         let random = true;
         let shortUrl = ""
         const body = req.body;
-        if (body.short){
+        if (body.short) {
             shortUrl = body.short;
             random = false;
         }
-        else{
+        else {
             shortUrl = utils.randomUrl(6);
         }
         try {
-            const url = await this.repository.create({full: fullUrl, short: shortUrl, random: random});
-            res.status(201).json(url);
+            const urlShortner = await this.repository.create({ full: fullUrl, short: shortUrl, random: random });
+
+            const url = urlShortner.dataValues.full + "/" + urlShortner.dataValues.short;
+            res.status(201).json({ url: url });
         } catch (err) {
-            if (err.name === 'SequelizeUniqueConstraintError'){
-                res.status(409).send({err: 'Short in use'});
+            if (err.name === 'SequelizeUniqueConstraintError') {
+                res.status(409).send({ err: 'Short in use' });
             }
             else {
                 res.status(500).send('Internal server error');
@@ -64,13 +66,13 @@ class UrlController {
         try {
             const url = await this.repository.findByShort(shortUrl);
             if (!url) {
-                res.status(404).send({err:'Short URL not found'});
+                res.status(404).send({ err: 'Short URL not found' });
             } else {
                 url.count += 1;
                 await url.save();
                 const available = await utils.isUrlAvailable(url.full);
-                if (!available){
-                    res.status(503).send({err:'Full URL Unavailable'});
+                if (!available) {
+                    res.status(503).send({ err: 'Full URL Unavailable' });
                     return;
                 }
                 res.redirect(url.full);
@@ -92,7 +94,7 @@ class UrlController {
             const lastYear = await this.repository.totalCountLastYear();
             const countByShortUrl = await this.repository.totalRedirectCountUrls();
             let listCountByShortUrl = [];
-            for (let i = 0; i < countByShortUrl.length; i++){
+            for (let i = 0; i < countByShortUrl.length; i++) {
                 let obj = {};
                 obj[countByShortUrl[i].short] = countByShortUrl[i].count;
                 listCountByShortUrl.push(obj);
@@ -110,7 +112,7 @@ class UrlController {
             res.status(200).json(metrics);
         } catch (err) {
             console.error(err);
-            res.status(500).send({err: 'Internal server error'});
+            res.status(500).send({ err: 'Internal server error' });
         }
     }
 }
