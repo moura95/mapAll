@@ -5,7 +5,7 @@
 `/docs/UrlShortner.postman_collection.json`
 
 ## Google Cloud enviroment
-https://mapall-nun74sicwq-ew.a.run.app
+https://mapall-west1-nun74sicwq-ew.a.run.app
 
 ## Run Local
 
