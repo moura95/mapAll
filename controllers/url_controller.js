@@ -1,7 +1,6 @@
 const utils = require('../utils/utils');
 const Ajv = require("ajv")
 const ajv = new Ajv()
-const baseURL = process.env.BASE_URL;
 class UrlController {
     constructor(repository) {
         this.repository = repository;
@@ -29,6 +28,7 @@ class UrlController {
     async CreateUrl(req, res) {
         const fullUrl = req.body.full;
         const valid = this.validate(req.body)
+        const baseURL = req.hostname + ":" + process.env.PORT;
         if (!valid) {
             res.status(400).send({ err: 'Invalid body' });
             return;
