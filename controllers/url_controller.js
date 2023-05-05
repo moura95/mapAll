@@ -1,6 +1,7 @@
 const utils = require('../utils/utils');
 const Ajv = require("ajv")
 const ajv = new Ajv()
+const baseURL = process.env.BASE_URL;
 class UrlController {
     constructor(repository) {
         this.repository = repository;
@@ -49,7 +50,7 @@ class UrlController {
         try {
             const urlShortner = await this.repository.create({ full: fullUrl, short: shortUrl, random: random });
 
-            const url = urlShortner.dataValues.full + "/" + urlShortner.dataValues.short;
+            const url = baseURL + "/redirect/" + urlShortner.dataValues.short;
             res.status(201).json({ url: url });
         } catch (err) {
             if (err.name === 'SequelizeUniqueConstraintError') {
