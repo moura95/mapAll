@@ -28,7 +28,13 @@ class UrlController {
     async CreateUrl(req, res) {
         const fullUrl = req.body.full;
         const valid = this.validate(req.body)
-        const baseURL = req.hostname + ":" + process.env.PORT;
+        let baseURL = req.hostname;
+        if (baseURL == "localhost") {
+            baseURL = baseURL + ":" + process.env.PORT
+
+        } else {
+            baseURL = req.hostname;
+        }
         if (!valid) {
             res.status(400).send({ err: 'Invalid body' });
             return;
